@@ -226,7 +226,7 @@ $data = getData($_SESSION['uid']);
                             timer: 2000, // Duración de la alerta en milisegundos (2 segundos)
                             showConfirmButton: false
                             }).then(function() {
-                                window.location.replace("https://2104-187-191-42-160.ngrok-free.app/home.php");
+                                window.location.replace("https://2104-187-191-42-160.ngrok-free.app/addAppointment.php");
                         });
                     } else {
                         alert(res.msg)
