@@ -136,7 +136,7 @@ async function signup(e) {
                 const q = await fetch('/api/index.php?type=register', settings);
                 const res = await q.json();
                 if(res.status == "EXITO"){
-                    window.location.replace("http://192.168.100.102/home.php");
+                    window.location.replace("https://2104-187-191-42-160.ngrok-free.app/home.php");
                 }else{
                     btnsignup.innerHTML = "Registrarme";
                     btnsignup.disabled = false;

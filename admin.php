@@ -10,8 +10,8 @@ if (!verify($_SESSION['uid'])) {
     header("Location: onboard.php");
 }
 $data = getData($_SESSION['uid']);
-if($data['role'] == '1'){
-    header("Location: admin.php");
+if($data['role'] != '1'){
+    header("Location: home.php");
 }
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ if($data['role'] == '1'){
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Despacho Contable - Home</title>
+    <title>Despacho Contable - Admin</title>
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -43,8 +43,9 @@ if($data['role'] == '1'){
             <div class="section-title mt-2 pb-0">
                 <h2 style="text-transform:none !important;font-weight:500;margin-bottom: 0px;">Hola <b><?= $data['firstname'] ?></b> :)</h2>
                 <h3 style="text-transform:none !important;font-weight:500;">¿Qué desea hacer hoy?</h3>
-                <a href="addAppointment.php" class="btn btn-primary" role="button">Realizar cita</a>
-                <a href="myAppointments.php" class="btn btn-warning ms-1" role="button">Ver mis citas</a>
+                <a href="showAppoints.php" class="btn btn-primary" role="button">Ver citas</a>
+                <a href="showUsers.php" class="btn btn-warning ms-1" role="button">Ver usuarios</a>
+                <a href="showMessages.php" class="btn btn-dark ms-1" role="button">Ver Mensajes</a>
             </div>
         </div>
     </section>

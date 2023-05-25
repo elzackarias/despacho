@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'lib/config.php';
 include 'components/navbar.php';
 include 'components/footer.php';
 /*if (isset($_SESSION['uid'])) {
@@ -30,7 +31,7 @@ include 'components/footer.php';
 <body>
     <?php echo !isset($_SESSION['uid']) ? navbar_notlogged() : navbar_logged(); ?>
     <section id="contact" class="contact section-bg">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
 
             <div class="section-title">
                 <h2>Contact</h2>
@@ -63,30 +64,40 @@ include 'components/footer.php';
                 </div>
 
                 <div class="col-lg-8 mt-5 mt-lg-0">
-
-                    <form action="forms/contact.php" method="post" role="form" class="contact-form">
+                    <form action="" method="post">
                         <div class="row gy-2 gx-md-3">
                             <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                             </div>
                             <div class="form-group col-12">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
                             </div>
                             <div class="form-group col-12">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                                <p style="color:red;"><?= $errores ?></p>
+                                <p style="color:green;margin-top: -10px;font-weight: 700;font-size: 20px;"><?= $_GET['msg'] ?></p>
                             </div>
-                            <div class="my-3 col-12">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center col-12"><button type="submit">Send Message</button></div>
+                            <div class="text-center col-12"><input name="enviar" type="submit" value="Enviar"></div>
                         </div>
                     </form>
-
+                    <?php
+                    if (isset($_POST['enviar'])) {
+                        // Procesar los datos del formulario
+                        $nombre = htmlspecialchars(strip_tags($_POST['name']), ENT_QUOTES);
+                        $email = htmlspecialchars(strip_tags($_POST['email']), ENT_QUOTES);
+                        $subject = htmlspecialchars(strip_tags($_POST['subject']), ENT_QUOTES);
+                        $message = htmlspecialchars(strip_tags($_POST['message']), ENT_QUOTES);
+                        if(!empty($nombre) || !empty($email) || !empty($subject) || !empty($message)){
+                            $q = mysqli_query($connect,"INSERT INTO messages (name,email,subject,message) VALUES ('$nombre','$email','$subject','$message')");
+                            echo '<script>window.location.replace("https://2104-187-191-42-160.ngrok-free.app/contact.php?msg=Enviado");</script>';
+                        }else{
+                            $errores = "Rellena todos los campos";
+                        }
+                    }
+                    ?>
                 </div>
 
             </div>

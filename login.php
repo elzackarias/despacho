@@ -41,7 +41,6 @@ if (isset($_SESSION['uid'])) {
                         <input class="form-control form-space" type="text" placeholder="micorreo@ejemplo.com" name="email" id="email" required>
                         <label class="text-right up-txt-form" for="pinput" class="form-label">Contraseña</label><br>
                         <input class="form-control form-space" type="password" placeholder="•••••••" name="password" id="pwd" required>
-                        <!--<input class="btn btn-primary btn-form mt-2" type="submit" name="signup" id="btnlogin" value="Iniciar sesión">-->
                         <button type="submit" class="btn btn-primary btn-form mt-2" name="signup" id="btnlogin">Iniciar sesión</button>
                         <p class="text-center mt-1">¿Aún no tienes cuenta?, <a href="signup.php">Registrate</a></p>
                     </form>

@@ -70,6 +70,9 @@ h6 {
   font-size: 32px !important;
   line-height: 61px !important;
 }
+.btn-green{
+  background-color: #05a357 !important;border-color: #05a357 !important;color:#fff !important;
+}
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -1970,4 +1973,32 @@ section {
   background: #3194db;
   color: #fff;
   text-decoration: none;
+}
+.a0D6EF6 {
+  color: #fff !important;
+  background-color: #0D6EF6;
+}
+
+.a454655 {
+  color: #fff !important;
+  background-color: #454655;
+}
+
+.aA0A6DC {
+  color: #fff !important;
+  background-color: #A0A6DC;
+}
+
+.aFF617D {
+  color: #fff !important;
+  background-color: #FF617D;
+}
+
+.green-square {
+  width: 20px;
+  height: 20px;
+  background-color: #198754;
+  display: inline-flex;
+  margin-top: 11px;
+  margin-bottom: -2px;
 }
